@@ -1,14 +1,7 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-<<<<<<< HEAD
-  {
-    "github/copilot.vim",
-    lazy = false,
-  },
-=======
 
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
   "nvim-lua/plenary.nvim",
 
   {
@@ -64,11 +57,7 @@ local default_plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-<<<<<<< HEAD
-    version = "",
-=======
     version = "2.20.7",
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
     init = function()
       require("core.utils").lazy_load "indent-blankline.nvim"
     end,
@@ -84,10 +73,7 @@ local default_plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-<<<<<<< HEAD
-=======
     tag = "v0.9.2",
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
     init = function()
       require("core.utils").lazy_load "nvim-treesitter"
     end,
@@ -148,13 +134,9 @@ local default_plugins = {
 
       -- custom nvchad cmd to install all mason binaries listed
       vim.api.nvim_create_user_command("MasonInstallAll", function()
-<<<<<<< HEAD
-        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-=======
         if opts.ensure_installed and #opts.ensure_installed > 0 then
           vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
         end
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
       end, {})
 
       vim.g.mason_binaries_list = opts.ensure_installed
@@ -255,11 +237,7 @@ local default_plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
-<<<<<<< HEAD
-    dependencies = { "nvim-treesitter/nvim-treesitter", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
-=======
     dependencies = { "nvim-treesitter/nvim-treesitter" },
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"

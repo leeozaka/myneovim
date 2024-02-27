@@ -31,7 +31,6 @@ M.ui = {
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
-<<<<<<< HEAD
     theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
@@ -51,13 +50,6 @@ M.ui = {
       --   end)()
       -- )
     end,
-=======
-    theme = "default", -- default/vscode/vscode_colored/minimal
-    -- default/round/block/arrow separators work only for default statusline theme
-    -- round and block will work for minimal theme only
-    separator_style = "default",
-    overriden_modules = nil,
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
   },
 
   -- lazyload it when there are 1+ buffers
@@ -102,10 +94,7 @@ M.ui = {
       disabled = false,
       silent = true, -- silences 'no signature help available' message from appearing
     },
-<<<<<<< HEAD
     inlay_hints = { enabled = true },
-=======
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
   },
 }
 

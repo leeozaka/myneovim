@@ -8,6 +8,8 @@ end
 
 require("core.utils").load_mappings()
 
+vim.wo.relativenumber = true
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 -- bootstrap lazy.nvim!
@@ -18,8 +20,4 @@ end
 
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
-<<<<<<< HEAD
-vim.wo.relativenumber = true
-=======
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
 require "plugins"

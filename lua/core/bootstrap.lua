@@ -40,11 +40,7 @@ M.gen_chadrc_template = function()
   local path = fn.stdpath "config" .. "/lua/custom"
 
   if fn.isdirectory(path) ~= 1 then
-<<<<<<< HEAD
     local input = fn.input "Do you want to install example custom config? (y/N): "
-=======
-    local input = vim.env.NVCHAD_EXAMPLE_CONFIG or fn.input "Do you want to install example custom config? (y/N): "
->>>>>>> 282a23f (lock nvim-treesitter to stable version)
 
     if input:lower() == "y" then
       M.echo "Cloning example custom config repo..."

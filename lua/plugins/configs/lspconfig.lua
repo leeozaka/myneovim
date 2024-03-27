@@ -13,6 +13,8 @@ M.on_attach = function(client, bufnr)
     require("nvchad.signature").setup(client)
   end
 
+  vim.lsp.inlay_hint.enable (bufnr, true)
+
   if not utils.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end

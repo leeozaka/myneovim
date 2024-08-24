@@ -71,22 +71,22 @@ local default_plugins = {
     end,
   },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    tag = "v0.9.2",
-    init = function()
-      require("core.utils").lazy_load "nvim-treesitter"
-    end,
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-    build = ":TSUpdate",
-    opts = function()
-      return require "plugins.configs.treesitter"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "syntax")
-      require("nvim-treesitter.configs").setup(opts)
-    end,
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   tag = "v0.9.2",
+  --   init = function()
+  --     require("core.utils").lazy_load "nvim-treesitter"
+  --   end,
+  --   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+  --   build = ":TSUpdate",
+  --   opts = function()
+  --     return require "plugins.configs.treesitter"
+  --   end,
+  --   config = function(_, opts)
+  --     dofile(vim.g.base46_cache .. "syntax")
+  --     require("nvim-treesitter.configs").setup(opts)
+  --   end,
+  -- },
 
   -- git stuff
   {
@@ -230,7 +230,7 @@ local default_plugins = {
       return require "plugins.configs.nvimtree"
     end,
     config = function(_, opts)
-      dofile(vim.g.base46_cache .. "nvimtree")
+      -- dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
     end,
   },

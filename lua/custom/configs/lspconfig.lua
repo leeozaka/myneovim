@@ -4,7 +4,7 @@ local capabilities = base.capabilities
 
 local lspconfig = require("lspconfig")
 -- local servers = {"html", "lua_ls","tailwindcss"}
-local servers = { "lua_ls" }
+local servers = { "lua_ls", "gopls" }
 
 lspconfig.csharp_ls.setup {
   init_options = {
@@ -21,7 +21,7 @@ lspconfig.clangd.setup {
 
 lspconfig.tsserver.setup {
   on_attach = function(client, bufnr)
-    vim.lsp.inlay_hint.enable(bufnr, true)
+    vim.lsp.inlay_hint.enable(true)
     client.server_capabilities.documentFormattingProvider = false
   end
 }

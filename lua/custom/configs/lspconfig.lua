@@ -4,14 +4,29 @@ local capabilities = base.capabilities
 
 local lspconfig = require("lspconfig")
 -- local servers = {"html", "lua_ls","tailwindcss"}
-local servers = { "lua_ls", "gopls" }
+local servers = { "lua_ls", "gopls", "tailwindcss" }
+
+lspconfig.angularls.setup {}
+
+require("aerial").setup({
+    -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+    on_attach = function(bufnr)
+        -- Jump forwards/backwards with '{' and '}'
+        vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+        vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+    end,
+})
+
+-- You probably also want to set a keymap to toggle aerial
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+
 
 lspconfig.csharp_ls.setup {
-  init_options = {
-    AutomaticWorkspaceInit = true
-  },
-  capabilities = capabilities,
-  on_attach = on_attach,
+    init_options = {
+        AutomaticWorkspaceInit = true
+    },
+    capabilities = capabilities,
+    on_attach = on_attach,
 }
 
 lspconfig.clangd.setup {
@@ -19,18 +34,18 @@ lspconfig.clangd.setup {
     on_attach = on_attach,
 }
 
-lspconfig.tsserver.setup {
-  on_attach = function(client, bufnr)
-    vim.lsp.inlay_hint.enable(true)
-    client.server_capabilities.documentFormattingProvider = false
-  end
+lspconfig.ts_ls.setup {
+    on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(true)
+        client.server_capabilities.documentFormattingProvider = false
+    end
 }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
+    lspconfig[lsp].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+    }
 end
 
 require("mason-lspconfig").setup()
@@ -81,9 +96,9 @@ require("mason-lspconfig").setup()
 -- }
 
 --lspconfig.clangd.setup {
- -- on_attach = function(client, bufnr)
-  --  client.server_capabilities.signatureHelpProvider = false
-   -- on_attach(client, bufnr)
+-- on_attach = function(client, bufnr)
+--  client.server_capabilities.signatureHelpProvider = false
+-- on_attach(client, bufnr)
 --  end,
 --  capabilities = capabilities,
 --}

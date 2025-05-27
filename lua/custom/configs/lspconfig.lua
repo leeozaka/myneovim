@@ -3,17 +3,20 @@ local on_attach = base.on_attach
 local capabilities = base.capabilities
 
 local lspconfig = require("lspconfig")
--- local servers = {"html", "lua_ls","tailwindcss"}
-local servers = { "lua_ls", "gopls", "tailwindcss" }
+local servers = { "lua_ls", "gopls", "tailwindcss", "jdtls", "prismals" }
+-- local servers = { "lua_ls", "tailwindcss" }
 
 lspconfig.angularls.setup {}
 
 require("aerial").setup({
+    layout = {
+        resize_to_content = true,
+    },
     -- optionally use on_attach to set keymaps when aerial has attached to a buffer
     on_attach = function(bufnr)
         -- Jump forwards/backwards with '{' and '}'
-        vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-        vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+        -- vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+        -- vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
     end,
 })
 
@@ -31,6 +34,7 @@ lspconfig.csharp_ls.setup {
 
 lspconfig.clangd.setup {
     capabilities = capabilities,
+    offsetEncoding = { "utf-8" },
     on_attach = on_attach,
 }
 

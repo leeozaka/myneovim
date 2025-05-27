@@ -6,7 +6,6 @@ local default_plugins = {
 
   {
     "NvChad/base46",
-    branch = "v2.0",
     build = function()
       require("base46").load_all_highlights()
     end,
@@ -14,7 +13,6 @@ local default_plugins = {
 
   {
     "NvChad/ui",
-    branch = "v2.0",
     lazy = false,
   },
 
@@ -57,23 +55,24 @@ local default_plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    version = "2.20.7",
-    init = function()
-      require("core.utils").lazy_load "indent-blankline.nvim"
-    end,
-    opts = function()
-      return require("plugins.configs.others").blankline
-    end,
+    event = "User FilePost",
+    opts = {
+      indent = { char = "│", highlight = "IblChar" },
+      scope = { char = "│", highlight = "IblScopeChar" },
+    },
     config = function(_, opts)
-      require("core.utils").load_mappings "blankline"
       dofile(vim.g.base46_cache .. "blankline")
-      require("indent_blankline").setup(opts)
+
+      local hooks = require "ibl.hooks"
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      require("ibl").setup(opts)
+
+      dofile(vim.g.base46_cache .. "blankline")
     end,
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    tag = "v0.9.2",
     init = function()
       require("core.utils").lazy_load "nvim-treesitter"
     end,
